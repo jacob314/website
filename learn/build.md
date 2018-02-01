@@ -12,30 +12,33 @@ This page teaches the basic concept of how widgets are rendered.
 
 ## Widgets
 
-All rendering in Flutter is conctrolled by widgets. Some widgets correspond to ‘controls’, for example `FlatButton` and `Text`. Other widgets control the layout of other Widgets, for example `Center` and `Row`.
+All rendering in Flutter is performed by widgets. Some widgets correspond to ‘controls’, for example `FlatButton` and `Text`. Other widgets control the layout of other Widgets, for example `Center` and `Row`.
 
 ## build() methods
 
-Widgets ‘put pixels on the screen’ inside their build() method. This method is called by the Flutter framework when the widget is part of the current rendering tree, and when any of the dependencies of the widget change.
+Widgets ‘put pixels on the screen’ using a build() method. This method is called by the Flutter framework when the widget is part of the current rendering tree, and when any of the dependencies of the widget change.
 
-Build methods often render content by instantiating other widgets. Actually, this is a very common pattern in Flutter: Widgets are rendered by composing them from existing widgets. As a concrete example, consider this build() method for the FlatButton:
+Build methods often render content by instantiating other widgets. Actually, this is a very common pattern in Flutter: Widgets are rendered by composing them from existing widgets. As a concrete example, consider the build() method of the app you just created after the installation step:
 
 ```dart
 Widget build(BuildContext context) {
-    return new MaterialButton(
-      onPressed: onPressed,
-      color: _getColor(context),
-      highlightColor: highlightColor ?? Theme.of(context).highlightColor,
-      splashColor: splashColor ?? Theme.of(context).splashColor,
-      elevation: enabled ? elevation : disabledElevation,
-      highlightElevation: enabled ? highlightElevation : disabledElevation,
-      colorBrightness: colorBrightness,
-      child: child,
-    );
-  }
+  return new MaterialApp(
+    title: 'Flutter Demo',
+    home: new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Android'),
+      ),
+      body: new Center(
+        child: new Text('Hello World'),
+      ),
+    ),
+  );
+}
 ```
 
-As you can see this simple instantiates a MaterialButton, and configures it to have the desired apperance for a “flat” button.
+This starts by instantiating a new MaterialApp; a widget that contains a full skeleton of a mobile application usign Material design. This app is configured with a 'scaffold', and this is in turn configured with an application bar, and a body, again by creating new widgets.
+
+Try to change some of the text strings in the source code, and hit hot reload to see the effect of the change!
 
 ## Next step
 
